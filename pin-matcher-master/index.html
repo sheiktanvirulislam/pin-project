@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input class="form-control" type="text" id="input-tag-generator" placeholder="click the button to see random pin.">
+                    <button class="generate-btn" id="generate-pin">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <input class="form-control" id="submit1" type="text">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div class="button">7</div>
+                              <div class="button">8</div>
+                              <div class="button">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div class="button">4</div>
+                              <div class="button">5</div>
+                              <div class="button">6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div class="button">1</div>
+                              <div class="button">2</div>
+                              <div class="button">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div class="button"><</div>
+                                <div class="button">0</div>
+                                <div class="button">C</div>
+                            </div>
+                            <div>
+                                <button type="submit" id="btn1" class="submit-btn">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="notify-id" class="notify-section">
+            <p class="notify" id="notmatch" >❌ Pin Didn't Match, Please try again</p>
+            <p class="notify" id="match">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+  
+<script>
+     
+     const Secret1 = document.getElementById('notmatch');
+     Secret1.style.display = 'none'; 
+     const Secret2 = document.getElementById('match');
+     Secret2.style.display = 'none';
+     const randomPin = Math.floor(Math.random()*10000);
+     const btnFirst = document.getElementById('generate-pin').addEventListener('click', function(event){
+        // const inputTagGenerator = document.getElementById('input-tag-generator').innerText;
+        // const convert = parseFloat(inputTagGenerator);
+        // const randomPin = Math.random();
+        // const convertToInteger = randomPin*10000; 
+        // const  roundingNumber = Math.round(convertToInteger);
+        // const total =  roundingNumber;
+        // document.getElementById('input-tag-generator').innerText = total;
+        // document.getElementById('input-tag-generator').value = "";   
+        // // console.log(inputTagGenerator);
+            
+        if (randomPin>1000) {
+            document.getElementById('input-tag-generator').value = randomPin;    
+        }
+        
+        // document.getElementById('input-tag-generator').value = "";
+       
+    })
+     
+  
+    // function buttonPad(className,inputTagName) {
+    //     let buttons =  document.getElementsByClassName(className);
+    //     for (let i = 0; i < buttons.length; i++) {
+    //     const element = buttons[i]; 
+    //     element.addEventListener('click',function (event) {
+    //         const elementValue = parseFloat(element.innerText);          
+    //         const inputPin = document.getElementById(inputTagName).value;
+    //         document.getElementById('submit1').value  += elementValue;   
+    //         return elementValue; 
+    //     } 
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    let buttons =  document.getElementsByClassName('button'); 
+    
+    // console.log(buttons); 
+    for (let i = 0; i < buttons.length; i++) {
+        const element = buttons[i];
+        
+        element.addEventListener('click',function (event) {
+            const elementValue = parseFloat(element.innerText);          
+            const inputPin = document.getElementById('submit1').value; 
+            //   inputPin += elementValue;
+            // document.getElementById('submit1').value += elementValue; 
+        //   document.getElementById('submit1').value ="";
+        //   console.log(elementValue);
+        document.getElementById('submit1').value  += elementValue;
+        
+            
+             
+        
+    })
+    
+
+
+    } 
+    // const submitButton = document.getElementById('btn1');
+    // submitButton.addEventListener('click',function (event){
+    //     if (document.getElementById('submit1').value == randomPin) {
+    //     Secret.style.display = 'block';
+        
+    //     }  
+       
+    //     } 
+     
+    const submitButton = document.getElementById('btn1');
+    submitButton.addEventListener('click',function (event) {
+        if (document.getElementById('submit1').value == randomPin) {
+           Secret2.style.display = 'block'; 
+            
+        }
+        
+    })
+     
+     
+      
+</script> 
+
+</body>
+</html>
